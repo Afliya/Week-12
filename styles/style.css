@@ -1,0 +1,10 @@
+.body {
+    margin: 0 auto;
+    width: 70vw;
+    font-family: Inter, sans-serif;
+    background-color: rgb(186, 164, 236);
+}
+
+.comments__input {
+    margin: 10px;
+}
