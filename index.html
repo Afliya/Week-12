@@ -18,24 +18,28 @@
             <fieldset>
                 <legend><b>Оставьте ваш комментарий</b></legend>
                 <div class="comments comments__input">
-                    <label for="full-name" id="full-name">Введите ваше ФИО</label>
-                    <input type="text" name="full-name">
+                    <label for="full-name">Введите ваше ФИО</label>
+                    <input id="full-name" type="text" name="full-name">
                 </div>
                 <div class="comments comments__input">
                     <label for="avatar">Введите ссылку вашего аватара</label>
-                    <input type="url" name="avatar">
+                    <input id="avatar-link" type="text" name="avatar">
                 </div>
                 <div class="comments comments__input">
                     <label for="comment">Оставьте комментарий</label><br>
                     <textarea name="comment" id="" cols="30" rows="10"></textarea>
                 </div>
-                <input type="submit" value="Отправить">
+                <button id="button" type="button" onclick="openLink()">Отправить</button>
+
             </fieldset>
-            
-            <div>
-    
-            </div></article>
-        
+        </article>
+        <article>
+            <div id="output">
+                <p id="output"></p>
+                <img id="avatar-result" src="" alt="">
+                <p></p>
+            </div>
+        </article>
     </main>
     
     <script src="./index.js"></script>
