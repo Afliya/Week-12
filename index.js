@@ -26,10 +26,12 @@ let fullName = document.querySelector("#full-name").textContent;
 let button = document.querySelector("#button").textContent;
 let output = document.querySelector("#output").textContent;
 
-button.onclick = function () {
+button.addEventListener('click', function(event) {
   let b = fullName.textContent;
   output.textContent = b[0].toUpperCase() + b.slice(1);
-};
+}
+)
+
 
 // let avatar = document.getElementById("avatar-result");
 // function openLink() {
@@ -48,12 +50,20 @@ button.onclick = function () {
 // });
 
 var button = document.getElementById("button");
-button,
-  addEventListener("click", function (event) {
-    var imageurl = this.document.getElementById("avatar-lin").value;
-    var img = this.document.createElement("img");
+button.addEventListener("click", function (event) {
+    var imageurl = document.getElementById("avatar-link").value;
+    var img = document.createElement("img");
     document.body.appendChild(img);
   });
+
+  let comment = document.getElementById('comment').value;
+  let button = document.getElementById('button');
+  let commentOutput = document.getElementById('comment-result');
+
+  button.addEventListener('click', function() {
+    commentOutput.value = str.replace(viagra, '***')
+  }
+  )
 
 //*** Задание под звездочкой
 let str = '<div id='content'>This is test link <a href="#"></a></div>';
