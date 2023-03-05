@@ -38,11 +38,29 @@ button.onclick = function () {
 //   avatar.alt = "avatar";
 // }
 
-let button = document.getElementById("button");
-button.addEventListener("click", function (event) {
-  let avatarlink = document.getElementById("avatar-link").value;
-  // let avatar = document.getElementById("avatar-result");
-  let img = document.createElement("img");
-  img.src = avatarlink;
-  document.body.appendChild(img);
-});
+// let button = document.getElementById("button");
+// button.addEventListener("click", function (event) {
+//   let avatarlink = document.getElementById("avatar-link").value;
+//   // let avatar = document.getElementById("avatar-result");
+//   let img = document.createElement("img");
+//   img.src = avatarlink;
+//   document.body.appendChild(img);
+// });
+
+var button = document.getElementById("button");
+button,
+  addEventListener("click", function (event) {
+    var imageurl = this.document.getElementById("avatar-lin").value;
+    var img = this.document.createElement("img");
+    document.body.appendChild(img);
+  });
+
+//*** Задание под звездочкой
+let str = '<div id='content'>This is test link <a href="#"></a></div>';
+function deleteTags(str) {
+  let regex = /( |<([^>]+)>)/ig,
+  result = str.replace(regex, "");
+  return result;
+}
+
+console.log(deleteTags(str));
