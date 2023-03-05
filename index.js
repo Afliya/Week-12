@@ -22,7 +22,7 @@
 //   this.value = this.value[0].toUpperCase() + this.value.slice(1);
 // });
 
-let fullName = document.querySelector("#full-name").textContent;
+let fullName = document.querySelector("#full-name");
 let button = document.querySelector("#button").textContent;
 let output = document.querySelector("#output").textContent;
 
