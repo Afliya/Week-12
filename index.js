@@ -1,76 +1,79 @@
-// let writeNameWithCapitl = () => {
-//   fio = document.getElementById("full-name");
-//   let result = fio[0].toUpperCase() + fio.slice(1);
-//   document.getElementById("full-name").textContent = result;
-// };
+const fullName = document.querySelector("#full-name");
+const avatar = document.querySelector("#avatar-link");
+const comment = document.querySelector("#comment");
+const buttonOne = document.querySelector("#button");
+const messages = document.querySelector(".messages");
 
-// function capitalizeFLEtter() {
-//   const fio = document.getElementById("full-name");
-//   const result = fio[0].toUpperCase() + fio.slice(1);
-//   const document.getElementById("full-name").textContent = result;
-// }
+const checkName = () => {
+  const b = fullName.value;
+  const userName = b.trim().split(" ");
+  const changedName = [];
 
-// let button = document.querySelector("button");
-// button.addEventListener("click", () => {
-//   let fio = document.getElementById("full-name");
-//   result = fio[0].toUpperCase() + fio.slice(1);
-//   document.getElementById("output").textContent = result;
-// });
-
-// let input = document.querySelector("#full-name");
-// input.addEventListener("input", function () {
-//   this.value = this.value[0].toUpperCase() + this.value.slice(1);
-// });
-
-let fullName = document.querySelector("#full-name");
-let button = document.querySelector("#button").textContent;
-let output = document.querySelector("#output").textContent;
-
-button.addEventListener('click', function(event) {
-  let b = fullName.textContent;
-  output.textContent = b[0].toUpperCase() + b.slice(1);
-}
-)
-
-
-// let avatar = document.getElementById("avatar-result");
-// function openLink() {
-//   let a = document.getElementById("avatar-link").value;
-
-//   avatar.alt = "avatar";
-// }
-
-// let button = document.getElementById("button");
-// button.addEventListener("click", function (event) {
-//   let avatarlink = document.getElementById("avatar-link").value;
-//   // let avatar = document.getElementById("avatar-result");
-//   let img = document.createElement("img");
-//   img.src = avatarlink;
-//   document.body.appendChild(img);
-// });
-
-var button = document.getElementById("button");
-button.addEventListener("click", function (event) {
-    var imageurl = document.getElementById("avatar-link").value;
-    var img = document.createElement("img");
-    document.body.appendChild(img);
+  userName.forEach((element) => {
+    let newName = element[0].toUpperCase() + element.slice(1).toLowerCase();
+    changedName.push(newName);
   });
 
-  let comment = document.getElementById('comment').value;
-  let button = document.getElementById('button');
-  let commentOutput = document.getElementById('comment-result');
+  const nameFormatted = changedName.join(" ");
+  return nameFormatted;
+};
 
-  button.addEventListener('click', function() {
-    commentOutput.value = str.replace(viagra, '***')
+fullName.addEventListener("change", () => {
+  fullName.value = checkName();
+});
+
+const messageAvatar = () => {
+  const imageurl = document.getElementById("avatar-link").value;
+  messageAvatar.src = imageurl;
+};
+
+const checkMessage = (spam) => {
+  const str = spam.replace(/viagra|xxx/gi, "***");
+  return str;
+};
+
+const createMessage = () => {
+  const message = document.createElement("div");
+  message.className = "message";
+  messages.prepend(message);
+
+  // username
+  const messageUserName = document.createElement("p");
+  messageUserName.className = "message_name";
+  if (fullName.value !== "") {
+    messageUserName.textContent = checkName();
+  } else {
+    messageUserName.textContent = "Username";
   }
-  )
+  message.append(messageUserName);
 
-//*** Задание под звездочкой
-let str = '<div id='content'>This is test link <a href="#"></a></div>';
-function deleteTags(str) {
-  let regex = /( |<([^>]+)>)/ig,
-  result = str.replace(regex, "");
-  return result;
-}
+  //time
+  let showTime = document.createElement("p");
+  showTime.className = "current_time";
+  let now = new Date();
+  showTime.innerHTML = now;
 
-console.log(deleteTags(str));
+  //avatar
+  const messageAvatar = document.createElement("img");
+  messageAvatar.className = "message_avatar";
+  messageAvatar.innerHTML = document.querySelector("#avatar-link").value;
+  message.append(messageAvatar);
+
+  // text
+  const messageText = document.createElement("p");
+  messageText.className = "message_text";
+  messageText.innerHTML = checkMessage(comment.value);
+  message.append(messageText);
+  fullName.value = "";
+  avatar.value = "";
+  comment.value = "";
+
+  // remove over 5 elements
+  if (messages.childElementCount > 5) {
+    messages.removeChild(messages.lastChild);
+  }
+};
+
+buttonOne.addEventListener("click", () => {
+  createMessage();
+});
